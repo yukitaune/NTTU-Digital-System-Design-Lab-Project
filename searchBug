@@ -20,20 +20,7 @@ def crawl_webpage(url):
         
         # 排除特定元素或類別
         for elem in main_content.find_all(["nav", "footer", "sidebar","script","noscript"]):  # 假設您想排除的元素是 <nav>、<footer> 和側邊欄，請替換成您需要排除的元素
-            elem.extract()
-       # 排除任何包含 "nav" 或 "banner" 的 class 名稱
-        pattern = re.compile(r'\b(nav|banner|menu)\b')  # 匹配單獨的 "nav" 或 "banner" 字詞
-        for elem in main_content.find_all(class_=pattern):
-            elem.extract()
-        
-        # # 找到所有的標籤
-        # all_tags = soup.find_all()
-        
-        # # 提取每個標籤的文字內容
-        # text_content = ""
-        # for tag in all_tags:
-        #     text_content += tag.get_text() + "\n"
-        
+            elem.extract()       
         # 使用 get_text() 方法獲取所有文字內容，並使用 strip() 方法去除頭尾空白，再使用 splitlines() 方法分割成行
         lines = main_content.get_text().strip().splitlines()
         
